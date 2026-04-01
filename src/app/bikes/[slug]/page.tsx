@@ -14,7 +14,8 @@ import { Bike360Viewer } from '@/components/shared/Bike360Viewer';
 
 export default function BikeDetailPage() {
     const { slug } = useParams();
-    const bike = ALL_BIKES.find((b) => b.id === slug);
+    const decodedSlug = decodeURIComponent(slug as string).toLowerCase().replace(/\s+/g, '-');
+    const bike = ALL_BIKES.find((b) => b.id.toLowerCase().replace(/\s+/g, '-') === decodedSlug);
     const [activeTab, setActiveTab] = useState<'specs' | 'features' | 'colors'>('specs');
 
     if (!bike) {
@@ -74,8 +75,8 @@ export default function BikeDetailPage() {
                             </div>
                         ) : (
                             <div className="bg-white rounded-[3rem] p-12 shadow-2xl border border-gray-100 relative overflow-hidden group">
-                                <div className="absolute top-8 right-8 z-10">
-                                    <Badge variant="default" className="bg-honda-red text-white py-1.5 px-4 font-black italic tracking-tighter">
+                                <div className="absolute top-8 right-8 z-30 pointer-events-none">
+                                    <Badge variant="default" className="bg-honda-red text-white py-1.5 px-4 font-black italic tracking-tighter shadow-xl">
                                         HONDA ORIGINAL
                                     </Badge>
                                 </div>

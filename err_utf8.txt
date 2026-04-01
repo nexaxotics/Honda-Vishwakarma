@@ -1,0 +1,73 @@
+﻿node.exe :  Γ¿» ESLint: 
+Failed to load config 
+"next/typescript" to 
+extend from. Referenced 
+from: D:\CODING\NEXA 2026\
+STARTUP\Honda-Vishwakarma-
+main\Honda\.eslintrc.json
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo        
+      : NotSpecified: (   
+  Γ¿» ESLint: Fa...\.es   
+ lintrc.json:String) [    
+], RemoteException
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+Failed to compile.
+
+./src/components/shared/Fo
+oter.tsx:130:65
+Type error: Unexpected 
+token. Did you mean 
+`{'>'}` or `&gt;`?
+
+[0m [90m 128 |[39m     
+                          
+  className[33m=[39m[32
+m"inline-flex 
+items-center gap-2 
+bg-white/10 
+hover:bg-honda-red 
+text-white py-3 px-6 
+rounded-xl transition-all 
+font-bold 
+text-sm"[39m[0m
+[0m [90m 129 |[39m     
+                        
+[33m>[39m[0m
+[0m[31m[1m>[22m[39m[
+90m 130 |[39m            
+                     {shar
+edT[33m.[39mofficialHond
+aWebsite} 
+[33m-[39m[33m>[39m[0m
+[0m [90m     |[39m     
+                          
+                          
+        
+[31m[1m^[22m[39m[0m
+[0m [90m 131 |[39m     
+                        [
+33m<[39m[33m/[39m[33ma
+[39m[33m>[39m[0m
+[0m [90m 132 |[39m     
+                    [33m<
+[39m[33m/[39m[33mdiv[
+39m[33m>[39m[0m
+[0m [90m 133 |[39m     
+                [33m<[39
+m[33m/[39m[33mdiv[39m
+[33m>[39m[0m
+Next.js build worker 
+exited with code: 1 and 
+signal: null
+[?25h

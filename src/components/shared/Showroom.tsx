@@ -133,7 +133,6 @@ export function Showroom({ initialCategory = 'all', limit }: ShowroomProps) {
 
 function BikeCard({ bike }: { bike: Bike }) {
     const [selectedColor, setSelectedColor] = useState<string>(bike.colors?.[0] || 'Default');
-    const [is360Active, setIs360Active] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
 
     return (
@@ -142,20 +141,6 @@ function BikeCard({ bike }: { bike: Bike }) {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            {/* 360 Toggle Badge */}
-            <div className="absolute top-4 right-4 z-20">
-                <button
-                    onClick={() => setIs360Active(!is360Active)}
-                    className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${is360Active
-                        ? 'bg-honda-red text-white shadow-lg shadow-honda-red/30'
-                        : 'bg-white/80 backdrop-blur text-gray-900 shadow-sm border border-gray-100 hover:bg-gray-50'
-                        }`}
-                >
-                    <FaCube className={is360Active ? 'animate-spin-slow' : ''} />
-                    {is360Active ? '360° View Active' : '360° View'}
-                </button>
-            </div>
-
             {/* Image Area */}
             <div className="aspect-[4/3] relative flex items-center justify-center p-8 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
                 {/* Dynamic Background Blob based on color */}
@@ -164,13 +149,12 @@ function BikeCard({ bike }: { bike: Bike }) {
                     style={{ backgroundColor: getColorHex(selectedColor) }}
                 />
 
-                {/* Simulated 360 View - Rotates image continuously if active */}
-                <div className={`relative w-full h-full flex items-center justify-center transition-all duration-1000 ${is360Active ? 'animate-float-rotate-y' : 'group-hover:scale-110'}`}>
+                <div className="relative w-full h-full flex items-center justify-center transition-all duration-1000 group-hover:scale-110">
                     <Image
                         src={getAsset(bike.image)}
                         alt={`${bike.name} in ${selectedColor}`}
                         fill
-                        className={`object-contain transition-all duration-700 ${is360Active ? '' : 'drop-shadow-2xl'}`}
+                        className="object-contain transition-all duration-700 drop-shadow-2xl"
                     />
                 </div>
 
@@ -252,10 +236,10 @@ function BikeCard({ bike }: { bike: Bike }) {
 
                 {/* Action Buttons */}
                 <div className="flex gap-3">
-                    <Link href={`/bikes/${bike.id}`} className="flex-1">
+                    <Link href={`/bikes/${bike.id}`} className="flex-1" prefetch={false}>
                         <Button variant="outline" className="w-full text-xs font-bold py-3">DETAILS</Button>
                     </Link>
-                    <Link href="/test-ride" className="flex-1">
+                    <Link href="/test-ride" className="flex-1" prefetch={false}>
                         <Button className="w-full text-xs font-bold py-3 bg-gray-900 text-white hover:bg-honda-red border-none">
                             TEST RIDE
                         </Button>

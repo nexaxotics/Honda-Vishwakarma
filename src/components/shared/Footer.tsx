@@ -1,22 +1,50 @@
 import React from 'react';
 import Link from 'next/link';
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock } from 'react-icons/fa';
-import { BUSINESS_INFO, TRANSLATIONS } from '@/lib/constants';
+import { BUSINESS_INFO } from '@/lib/constants';
 import { formatPhoneNumber } from '@/lib/utils';
+import { SHARED_TRANSLATIONS } from '@/lib/translations';
 
 interface FooterProps {
     lang: 'en' | 'hi';
 }
 
 export function Footer({ lang }: FooterProps) {
-    const t = TRANSLATIONS[lang];
+    const sharedT = SHARED_TRANSLATIONS[lang];
+    const t = {
+        en: {
+            authorizedDealer: 'Authorized Honda Two-Wheeler Dealer',
+            established: 'Established',
+            contact: 'Contact',
+            motorcycles: 'Motorcycles',
+            scooters: 'Scooters',
+            testRide: 'Test Ride',
+            service: 'Service',
+            finance: 'Finance & Insurance',
+            about: 'About Us',
+            openingHours: 'Opening Hours',
+            bottomNote: `Honda and the Honda logo are trademarks of Honda Motor Co., Ltd. This is an authorized ${BUSINESS_INFO.name.toUpperCase()} dealership website.`,
+        },
+        hi: {
+            authorizedDealer: '\u0905\u0927\u093f\u0915\u0943\u0924 \u0939\u094b\u0902\u0921\u093e \u091f\u0942-\u0935\u094d\u0939\u0940\u0932\u0930 \u0921\u0940\u0932\u0930',
+            established: '\u0938\u094d\u0925\u093e\u092a\u093f\u0924',
+            contact: '\u0938\u0902\u092a\u0930\u094d\u0915 \u0915\u0930\u0947\u0902',
+            motorcycles: '\u092e\u094b\u091f\u0930\u0938\u093e\u0907\u0915\u093f\u0932',
+            scooters: '\u0938\u094d\u0915\u0942\u091f\u0930',
+            testRide: '\u091f\u0947\u0938\u094d\u091f \u0930\u093e\u0907\u0921',
+            service: '\u0938\u0930\u094d\u0935\u093f\u0938',
+            finance: '\u092b\u093e\u0907\u0928\u0947\u0902\u0938 \u0914\u0930 \u0907\u0902\u0936\u094d\u092f\u094b\u0930\u0947\u0902\u0938',
+            about: '\u0939\u092e\u093e\u0930\u0947 \u092c\u093e\u0930\u0947 \u092e\u0947\u0902',
+            openingHours: '\u0916\u0941\u0932\u0928\u0947 \u0915\u093e \u0938\u092e\u092f',
+            bottomNote: `Honda \u0914\u0930 Honda \u0932\u094b\u0917\u094b, Honda Motor Co., Ltd. \u0915\u0947 \u091f\u094d\u0930\u0947\u0921\u092e\u093e\u0930\u094d\u0915 \u0939\u0948\u0902. \u092f\u0939 ${BUSINESS_INFO.name.toUpperCase()} \u0915\u0940 \u0905\u0927\u093f\u0915\u0943\u0924 \u0921\u0940\u0932\u0930\u0936\u093f\u092a \u0935\u0947\u092c\u0938\u093e\u0907\u091f \u0939\u0948.`,
+        },
+    }[lang];
     const currentYear = new Date().getFullYear();
 
     return (
         <footer className="bg-gray-900 text-gray-300">
             <div className="container-custom py-12">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-8">
-                    {/* About Section */}
                     <div className="text-center md:text-left">
                         <h3 className="text-xl font-bold text-white mb-4 uppercase tracking-tight">
                             {BUSINESS_INFO.name}
@@ -33,7 +61,6 @@ export function Footer({ lang }: FooterProps) {
                         </p>
                     </div>
 
-                    {/* Contact Section */}
                     <div className="text-center md:text-left">
                         <h4 className="text-lg font-bold text-white mb-6 md:mb-4 uppercase tracking-tight italic">
                             {t.contact}
@@ -65,9 +92,8 @@ export function Footer({ lang }: FooterProps) {
                         </div>
                     </div>
 
-                    {/* Quick Links */}
                     <div className="text-center md:text-left border-t border-b border-white/5 py-8 md:py-0 md:border-none">
-                        <h4 className="text-lg font-bold text-white mb-6 md:mb-4 uppercase tracking-tight italic">Quick Links</h4>
+                        <h4 className="text-lg font-bold text-white mb-6 md:mb-4 uppercase tracking-tight italic">{sharedT.quickLinks}</h4>
                         <ul className="grid grid-cols-2 md:grid-cols-1 gap-4 md:space-y-3 text-sm font-semibold">
                             {[
                                 { name: t.motorcycles, href: '/motorcycles' },
@@ -86,7 +112,6 @@ export function Footer({ lang }: FooterProps) {
                         </ul>
                     </div>
 
-                    {/* Opening Hours */}
                     <div className="text-center md:text-left">
                         <h4 className="text-lg font-bold text-white mb-6 md:mb-4 uppercase tracking-tight italic">
                             {t.openingHours}
@@ -102,29 +127,27 @@ export function Footer({ lang }: FooterProps) {
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-2 bg-white/10 hover:bg-honda-red text-white py-3 px-6 rounded-xl transition-all font-bold text-sm"
                             >
-                                Official Honda Website →
+                                {sharedT.officialHondaWebsite} &rarr;
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* Bottom Bar */}
             <div className="border-t border-white/5">
                 <div className="container-custom py-8">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
                         <div className="space-y-1">
                             <p className="text-sm font-bold tracking-tight">
-                                © {currentYear} {BUSINESS_INFO.name}
+                                Copyright {currentYear} {BUSINESS_INFO.name}
                             </p>
                             <p className="text-xs opacity-40 font-medium">
-                                Authorized Dealer • Rajauli, Bihar
+                                {sharedT.authorizedDealerRajauli}
                             </p>
                         </div>
                         <div className="space-y-2">
                             <p className="text-[10px] md:text-right opacity-40 leading-relaxed max-w-sm md:ml-auto">
-                                Honda and the Honda logo are trademarks of Honda Motor Co., Ltd.
-                                This is an authorized {BUSINESS_INFO.name.toUpperCase()} dealership website.
+                                {t.bottomNote}
                             </p>
                         </div>
                     </div>

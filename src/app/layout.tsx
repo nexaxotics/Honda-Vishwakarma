@@ -4,6 +4,7 @@ import { ClientLayout } from '@/components/shared/ClientLayout';
 import './globals.css';
 
 import { ASSET_SOURCE } from '@/config/assetSource';
+import NextTopLoader from 'nextjs-toploader';
 
 export const metadata = {
     title: `${BUSINESS_INFO.name} - Authorized Honda Two-Wheeler Dealer | Rajauli, Nawada, Bihar`,
@@ -67,6 +68,17 @@ export default function RootLayout({
                 />
             </head>
             <body className="antialiased">
+                <NextTopLoader
+                    color="#e4002b"
+                    initialPosition={0.08}
+                    crawlSpeed={200}
+                    height={3}
+                    crawl={true}
+                    showSpinner={false}
+                    easing="ease"
+                    speed={200}
+                    shadow="0 0 10px #e4002b,0 0 5px #e4002b"
+                />
                 <ClientLayout>
                     {children}
                 </ClientLayout>

@@ -46,7 +46,7 @@ export default function HomePage() {
                                         <FaPhone className="mr-2" /> CALL NOW
                                     </Button>
                                 </a>
-                                <Link href="/test-ride" className="w-full sm:w-auto sm:flex-1 sm:min-w-[180px]">
+                                <Link href="/test-ride" className="w-full sm:w-auto sm:flex-1 sm:min-w-[180px]" prefetch={false}>
                                     <Button size="lg" className="w-full bg-white text-honda-red hover:bg-gray-100 font-black py-6 md:py-7 shadow-xl shadow-black/20 border-none hover:scale-105 transition-transform">
                                         BOOK TEST RIDE
                                     </Button>
@@ -82,12 +82,12 @@ export default function HomePage() {
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
                                 />
                                 {/* Dynamic Sparkles */}
-                                <div className="absolute top-1/3 right-1/4 w-4 h-4 bg-honda-gold rounded-full animate-ping" />
-                                <div className="absolute bottom-1/3 left-1/4 w-3 h-3 bg-white rounded-full animate-ping" style={{ animationDelay: '1s' }} />
+                                <div className="absolute top-1/3 right-1/4 w-4 h-4 bg-honda-gold rounded-full opacity-50 animate-pulse" />
+                                <div className="absolute bottom-1/3 left-1/4 w-3 h-3 bg-white rounded-full opacity-50 animate-pulse" style={{ animationDelay: '1s' }} />
                             </div>
 
                             {/* Floating Highlight Card */}
-                            <div className="absolute bottom-12 -left-8 bg-white p-5 rounded-2xl shadow-2xl border text-gray-900 hidden md:block animate-bounce shadow-honda-red/20 z-20">
+                            <div className="absolute bottom-12 -left-8 bg-white p-5 rounded-2xl shadow-2xl border text-gray-900 hidden md:block animate-pulse-slow shadow-honda-red/20 z-20">
                                 <div className="flex items-center gap-4">
                                     <div className="w-12 h-12 bg-honda-red rounded-full flex items-center justify-center shadow-lg shadow-honda-red/40 animate-pulse-slow">
                                         <FaCheckCircle className="text-white text-xl" />
@@ -122,9 +122,9 @@ export default function HomePage() {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 h-auto lg:h-[600px]">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6">
                         {/* Primary Video - EV */}
-                        <div className="lg:col-span-8 h-[400px] lg:h-full">
+                        <div className="lg:col-span-8 min-h-[300px] md:min-h-[400px] lg:min-h-[500px]">
                             <VideoCard
                                 src="/video/EV.mp4"
                                 className="w-full h-full border border-white/10"
@@ -135,21 +135,27 @@ export default function HomePage() {
                         </div>
 
                         {/* Secondary Videos Stack */}
-                        <div className="lg:col-span-4 grid grid-rows-2 gap-6 h-[500px] lg:h-full">
-                            <VideoCard
-                                src="/video/BigWing.webm"
-                                className="w-full h-full border border-white/10"
-                                badge="HONDA BIGWING"
-                                title="Premium Racing DNA"
-                                description="Unleash the power of high-performance engineering."
-                            />
-                            <VideoCard
-                                src="/video/Honda-Hornet.mp4"
-                                className="w-full h-full border border-white/10"
-                                badge="STREET SPORTS"
-                                title="Hornet 2.0"
-                                description="Fly against the wind. The definition of street aggression."
-                            />
+                        <div className="lg:col-span-4 flex flex-col gap-4 md:gap-6">
+                            <div className="flex-1 min-h-[250px]">
+                                <VideoCard
+                                    src="/video/BigWing.webm"
+                                    className="w-full h-full border border-white/10"
+                                    badge="HONDA BIGWING"
+                                    title="Premium Racing DNA"
+                                    description="Unleash the power of high-performance engineering."
+                                    autoPlay={false}
+                                />
+                            </div>
+                            <div className="flex-1 min-h-[250px]">
+                                <VideoCard
+                                    src="/video/Honda-Hornet.mp4"
+                                    className="w-full h-full border border-white/10"
+                                    badge="STREET SPORTS"
+                                    title="Hornet 2.0"
+                                    description="Fly against the wind. The definition of street aggression."
+                                    autoPlay={false}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -160,7 +166,7 @@ export default function HomePage() {
             <Showroom limit={6} />
 
             <div className="text-center pb-12 bg-gray-50 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
-                <Link href="/motorcycles">
+                <Link href="/motorcycles" prefetch={false}>
                     <Button variant="outline" className="text-gray-900 border-gray-900 font-bold uppercase tracking-widest px-8 py-4 rounded-xl hover:bg-gray-900 hover:text-white transition-all">
                         View All Models
                     </Button>
@@ -313,7 +319,7 @@ export default function HomePage() {
                                             GET DIRECTIONS
                                         </Button>
                                     </a>
-                                    <Link href="/contact" className="w-full sm:flex-1">
+                                    <Link href="/contact" className="w-full sm:flex-1" prefetch={false}>
                                         <Button size="lg" variant="outline" className="w-full font-black py-6 md:py-7 border-2 border-gray-900 text-gray-900 rounded-2xl">
                                             MORE INFO
                                         </Button>

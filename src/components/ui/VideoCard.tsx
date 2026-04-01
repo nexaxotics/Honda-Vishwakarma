@@ -72,7 +72,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({
         >
             <video
                 ref={videoRef}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 poster={poster}
                 loop={loop}
                 muted={muted} // Initial mute state for attribute
